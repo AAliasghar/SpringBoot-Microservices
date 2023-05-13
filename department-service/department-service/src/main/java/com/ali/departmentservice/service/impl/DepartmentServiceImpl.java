@@ -19,11 +19,11 @@ public class DepartmentServiceImpl implements DepartmentService {
     public DepartmentDto saveDepartment(DepartmentDto departmentDto) {
 
         // Dto to JPA Entity
-        Department department = MappingDto.mappingEntity(departmentDto);
+        Department department = MappingDto.departmentMappingEntity(departmentDto);
         // Save Department
         Department savedDepartment = departmentRepository.save(department);
         // JPA Entity to Dto
-        DepartmentDto departmentDtoReturn = MappingDto.mappingDto(savedDepartment);
+        DepartmentDto departmentDtoReturn = MappingDto.departmentMappingDto(savedDepartment);
 
         return departmentDtoReturn;
     }
@@ -32,7 +32,7 @@ public class DepartmentServiceImpl implements DepartmentService {
     @Override
     public DepartmentDto getDepartmentByCode(String departmentCode) {
         Department department = departmentRepository.findByDepartmentCode(departmentCode);
-        DepartmentDto departmentDto = MappingDto.mappingDto(department);
+        DepartmentDto departmentDto = MappingDto.departmentMappingDto(department);
         return departmentDto;
     }
 }
