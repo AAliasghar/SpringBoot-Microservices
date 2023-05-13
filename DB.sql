@@ -3,9 +3,12 @@
 -----------------------------------------------------
 -- DROP SCHEMA IF EXISTS `department_db`;
 
-CREATE DATABASE `department_db`;
+-- CREATE DATABASE `department_db`;
  USE `department_db` ;
-SELECT * FROM users;
+
 -- -----------------------------------------------------
--- Table
+-- TABLE DEPARTMENTS
 -- -----------------------------------------------------
+
+SELECT * FROM departments ;
+-- DELETE FROM department_db.departments where id = 2 ; 

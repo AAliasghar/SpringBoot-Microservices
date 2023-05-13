@@ -5,7 +5,7 @@ import com.ali.departmentservice.entity.Department;
 
 public class MappingDto {
     // JPA Entity to Dto
-    public static DepartmentDto mappingDto(Department department){
+    public static   DepartmentDto mappingDto(Department department){
 
         DepartmentDto departmentDto = new DepartmentDto(
                 department.getId(),
@@ -17,7 +17,7 @@ public class MappingDto {
     }
 
     // Dto to JPA Entity
-    public static Department mappingEntity(DepartmentDto departmentDto){
+    public static   Department mappingEntity(DepartmentDto departmentDto){
 
         Department department = new Department(
                 departmentDto.getId(),
