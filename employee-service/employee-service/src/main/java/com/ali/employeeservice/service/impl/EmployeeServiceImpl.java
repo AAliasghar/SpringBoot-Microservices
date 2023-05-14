@@ -6,10 +6,10 @@ import com.ali.employeeservice.dto.EmployeeDto;
 import com.ali.employeeservice.entity.Employee;
 import com.ali.employeeservice.mapperDto.MappingDto;
 import com.ali.employeeservice.repository.EmployeeRepository;
+import com.ali.employeeservice.service.APIClient;
 import com.ali.employeeservice.service.EmployeeService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.web.reactive.function.client.WebClient;
 
 @Service
 @AllArgsConstructor
@@ -17,7 +17,9 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     private EmployeeRepository employeeRepository;
 //    private RestTemplate restTemplate;
-    private WebClient webClient;
+//    private WebClient webClient;
+
+    private APIClient apiClient;
 
     // Save Employee
     @Override
@@ -43,7 +45,9 @@ public class EmployeeServiceImpl implements EmployeeService {
 //
 //        DepartmentDto departmentDto = responseEntity.getBody();
 
-        DepartmentDto departmentDto  = webClient.get().uri("http://localhost:8080/api/departments/" + employee.getDepartmentCode()).retrieve().bodyToMono(DepartmentDto.class).block();
+//        DepartmentDto departmentDto  = webClient.get().uri("http://localhost:8080/api/departments/" + employee.getDepartmentCode()).retrieve().bodyToMono(DepartmentDto.class).block();
+
+        DepartmentDto departmentDto = apiClient.getDepartment(employee.getDepartmentCode());
 
         EmployeeDto employeeDto = MappingDto.employeeMappingDto(employee);
 
