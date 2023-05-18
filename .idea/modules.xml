@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/SpringBoot-Mirco-Employee.iml" filepath="$PROJECT_DIR$/.idea/SpringBoot-Mirco-Employee.iml" />
+      <module fileurl="file://$PROJECT_DIR$/api-gateway/api-gateway/api-gateway.iml" filepath="$PROJECT_DIR$/api-gateway/api-gateway/api-gateway.iml" />
       <module fileurl="file://$PROJECT_DIR$/department-service/department-service/department-service.iml" filepath="$PROJECT_DIR$/department-service/department-service/department-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/employee-service/employee-service/employee-service.iml" filepath="$PROJECT_DIR$/employee-service/employee-service/employee-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/service-registry/service-registry/service-registry.iml" filepath="$PROJECT_DIR$/service-registry/service-registry/service-registry.iml" />
