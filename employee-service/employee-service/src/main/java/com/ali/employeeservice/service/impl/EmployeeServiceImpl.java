@@ -54,9 +54,9 @@ public class EmployeeServiceImpl implements EmployeeService {
 
         APIResponseDto apiResponseDto = new APIResponseDto();
 
-        apiResponseDto.setEmployeeDto(employeeDto);
+        apiResponseDto.setEmployee(employeeDto);
 
-        apiResponseDto.setDepartmentDto(departmentDto);
+        apiResponseDto.setDepartment(departmentDto);
 
         return apiResponseDto;
     }
