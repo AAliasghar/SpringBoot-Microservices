@@ -2,9 +2,10 @@ package com.ali.configserver;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.config.server.EnableConfigServer;
 
 @SpringBootApplication
-//@EnableConfigServer provided auto-configuration in spring cloud 2022.0.0
+@EnableConfigServer
 public class ConfigServerApplication {
 
 	public static void main(String[] args) {
