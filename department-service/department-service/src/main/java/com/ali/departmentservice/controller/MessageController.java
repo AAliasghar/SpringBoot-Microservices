@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class MessageController {
 
     // Create the property  in department-service.properties
-    @Value("${}")
+    @Value("${spring.boot.message}")
     private String message;
 
     @GetMapping("message")
