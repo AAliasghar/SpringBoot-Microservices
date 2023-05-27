@@ -8,14 +8,17 @@ import com.ali.employeeservice.mapperDto.MappingDto;
 import com.ali.employeeservice.repository.EmployeeRepository;
 import com.ali.employeeservice.service.APIClient;
 import com.ali.employeeservice.service.EmployeeService;
-import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+import io.github.resilience4j.retry.annotation.Retry;
 import lombok.AllArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 @Service
 @AllArgsConstructor
 public class EmployeeServiceImpl implements EmployeeService {
 
+     private static final Logger LOGGER = LoggerFactory.getLogger(EmployeeServiceImpl.class);
     private EmployeeRepository employeeRepository;
 //    private RestTemplate restTemplate;
 //    private WebClient webClient;
@@ -36,10 +39,11 @@ public class EmployeeServiceImpl implements EmployeeService {
         return employeeDtoReturn;
     }
 
-    @CircuitBreaker(name = "${spring.application.name}",fallbackMethod = "getDefaultDepartment")
+    //@CircuitBreaker(name = "${spring.application.name}",fallbackMethod = "getDefaultDepartment")
+    @Retry(name = "${spring.application.name}", fallbackMethod = "getDefaultDepartment")
     @Override
     public APIResponseDto getEmployeeById(Long employeeId) {
-
+        LOGGER.info("inside getEmployeeById() method");
         Employee employee = employeeRepository.findById(employeeId).get();
 
 //        ResponseEntity<DepartmentDto> responseEntity = restTemplate.getForEntity("http://localhost:8080/api/departments/" + employee.getDepartmentCode(),
@@ -64,6 +68,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         return apiResponseDto;
     }
     public APIResponseDto getDefaultDepartment(Long employeeId, Exception exception) {
+        LOGGER.info("inside getDefaultDepartment() method");
         Employee employee = employeeRepository.findById(employeeId).get();
 
         DepartmentDto departmentDto = new DepartmentDto();
