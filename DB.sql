@@ -25,4 +25,23 @@ SELECT * FROM departments ;
 -- TABLE Employees
 -- -----------------------------------------------------
 SELECT * FROM employee_db.employees ;
+
+-- DELETE FROM department_db.departments where id = 2 ; 
+
+
+
+-- --------------------------------------------------------
+-- --------------------------------------------------------
+-- Schema Organization -------------------------
+-- ------------------------------------------------------
+-- DROP SCHEMA IF EXISTS `organization_db`;
+
+-- CREATE DATABASE `organization_db`;
+ USE `organization_db` ;
+
+-- -----------------------------------------------------
+-- TABLE Employees
+-- -----------------------------------------------------
+SELECT * FROM organization_db.org ;
+
 -- DELETE FROM department_db.departments where id = 2 ; 
