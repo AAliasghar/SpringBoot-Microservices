@@ -3,7 +3,7 @@ package com.ali.departmentservice.mapperDto;
 import com.ali.departmentservice.dto.DepartmentDto;
 import com.ali.departmentservice.entity.Department;
 
-public class MappingDto {
+public class DepartmentMapper {
     // JPA Entity to Dto
     public static   DepartmentDto departmentMappingDto(Department department){
 

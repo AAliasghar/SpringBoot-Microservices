@@ -2,7 +2,7 @@ package com.ali.departmentservice.service.impl;
 
 import com.ali.departmentservice.dto.DepartmentDto;
 import com.ali.departmentservice.entity.Department;
-import com.ali.departmentservice.mapperDto.MappingDto;
+import com.ali.departmentservice.mapperDto.DepartmentMapper;
 import com.ali.departmentservice.repository.DepartmentRepository;
 import com.ali.departmentservice.service.DepartmentService;
 import lombok.AllArgsConstructor;
@@ -19,11 +19,11 @@ public class DepartmentServiceImpl implements DepartmentService {
     public DepartmentDto saveDepartment(DepartmentDto departmentDto) {
 
         // Dto to JPA Entity
-        Department department = MappingDto.departmentMappingEntity(departmentDto);
+        Department department = DepartmentMapper.departmentMappingEntity(departmentDto);
         // Save Department
         Department savedDepartment = departmentRepository.save(department);
         // JPA Entity to Dto
-        DepartmentDto departmentDtoReturn = MappingDto.departmentMappingDto(savedDepartment);
+        DepartmentDto departmentDtoReturn = DepartmentMapper.departmentMappingDto(savedDepartment);
 
         return departmentDtoReturn;
     }
@@ -32,7 +32,7 @@ public class DepartmentServiceImpl implements DepartmentService {
     @Override
     public DepartmentDto getDepartmentByCode(String departmentCode) {
         Department department = departmentRepository.findByDepartmentCode(departmentCode);
-        DepartmentDto departmentDto = MappingDto.departmentMappingDto(department);
+        DepartmentDto departmentDto = DepartmentMapper.departmentMappingDto(department);
         return departmentDto;
     }
 }

@@ -4,7 +4,7 @@ import com.ali.employeeservice.dto.APIResponseDto;
 import com.ali.employeeservice.dto.DepartmentDto;
 import com.ali.employeeservice.dto.EmployeeDto;
 import com.ali.employeeservice.entity.Employee;
-import com.ali.employeeservice.mapperDto.MappingDto;
+import com.ali.employeeservice.mapperDto.EmployeeMapper;
 import com.ali.employeeservice.repository.EmployeeRepository;
 import com.ali.employeeservice.service.APIClient;
 import com.ali.employeeservice.service.EmployeeService;
@@ -30,11 +30,11 @@ public class EmployeeServiceImpl implements EmployeeService {
     public EmployeeDto saveEmployee(EmployeeDto employeeDto) {
 
         // Dto to JPA Entity
-        Employee employee = MappingDto.employeeMappingEntity(employeeDto);
+        Employee employee = EmployeeMapper.employeeMappingEntity(employeeDto);
         // Save Employee
         Employee savedEmployee = employeeRepository.save(employee);
         // JPA Entity to Dto
-        EmployeeDto employeeDtoReturn = MappingDto.employeeMappingDto(savedEmployee);
+        EmployeeDto employeeDtoReturn = EmployeeMapper.employeeMappingDto(savedEmployee);
 
         return employeeDtoReturn;
     }
@@ -57,7 +57,7 @@ public class EmployeeServiceImpl implements EmployeeService {
       DepartmentDto departmentDto = apiClient.getDepartment(employee.getDepartmentCode());
 
         // JPA Entity to Dto
-        EmployeeDto employeeDto = MappingDto.employeeMappingDto(employee);
+        EmployeeDto employeeDto = EmployeeMapper.employeeMappingDto(employee);
 
         APIResponseDto apiResponseDto = new APIResponseDto();
 
@@ -77,7 +77,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         departmentDto.setDepartmentDescription("Research and Development Department");
 
         // JPA Entity to Dto
-        EmployeeDto employeeDto = MappingDto.employeeMappingDto(employee);
+        EmployeeDto employeeDto = EmployeeMapper.employeeMappingDto(employee);
 
         APIResponseDto apiResponseDto = new APIResponseDto();
 
