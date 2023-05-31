@@ -3,6 +3,7 @@ package com.ali.employeeservice.service.impl;
 import com.ali.employeeservice.dto.APIResponseDto;
 import com.ali.employeeservice.dto.DepartmentDto;
 import com.ali.employeeservice.dto.EmployeeDto;
+import com.ali.employeeservice.dto.OrganizationDto;
 import com.ali.employeeservice.entity.Employee;
 import com.ali.employeeservice.mapperDto.EmployeeMapper;
 import com.ali.employeeservice.repository.EmployeeRepository;
@@ -13,6 +14,7 @@ import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import org.springframework.web.reactive.function.client.WebClient;
 
 @Service
 @AllArgsConstructor
@@ -21,7 +23,7 @@ public class EmployeeServiceImpl implements EmployeeService {
      private static final Logger LOGGER = LoggerFactory.getLogger(EmployeeServiceImpl.class);
     private EmployeeRepository employeeRepository;
 //    private RestTemplate restTemplate;
-//    private WebClient webClient;
+    private WebClient webClient;
 
     private APIClient apiClient;
 
@@ -56,6 +58,10 @@ public class EmployeeServiceImpl implements EmployeeService {
         // Getting Employee Department Code from Department
       DepartmentDto departmentDto = apiClient.getDepartment(employee.getDepartmentCode());
 
+        // Getting Employee Organization Code from Department
+//        OrganizationDto organizationDto = apiClient.getDepartment(employee.getDepartmentCode());
+        OrganizationDto organizationDto  = webClient.get().uri("http://localhost:8083/api/organizations/"
+                + employee.getDepartmentCode()).retrieve().bodyToMono(OrganizationDto.class).block();
         // JPA Entity to Dto
         EmployeeDto employeeDto = EmployeeMapper.employeeMappingDto(employee);
 
@@ -64,6 +70,8 @@ public class EmployeeServiceImpl implements EmployeeService {
         apiResponseDto.setEmployee(employeeDto);
 
         apiResponseDto.setDepartment(departmentDto);
+
+        apiResponseDto.setOrganization(organizationDto);
 
         return apiResponseDto;
     }
@@ -84,6 +92,8 @@ public class EmployeeServiceImpl implements EmployeeService {
         apiResponseDto.setEmployee(employeeDto);
 
         apiResponseDto.setDepartment(departmentDto);
+
+
 
         return apiResponseDto;
     }
