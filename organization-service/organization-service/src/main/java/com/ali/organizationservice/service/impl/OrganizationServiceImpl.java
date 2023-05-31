@@ -14,6 +14,7 @@ public class OrganizationServiceImpl implements OrganizationService {
 
     private OrganizationRepository organizationRepository;
 
+    // Save Organization
     @Override
     public OrganizationDto saveOrganization(OrganizationDto organizationDto) {
         // Covert OrganizationDto to JPA Entity
@@ -26,5 +27,14 @@ public class OrganizationServiceImpl implements OrganizationService {
         OrganizationDto organizationDtoReturn = OrganizationMapper.organizationMappingDto(savedOrganization);
 
         return organizationDtoReturn;
+    }
+
+    // Get Organization
+
+    public OrganizationDto getOrganizationByCode (String organizationCode){
+        Organization organization = organizationRepository.findByOrganizationCode(organizationCode);
+        OrganizationDto organizationDto = OrganizationMapper.organizationMappingDto(organization);
+
+        return organizationDto;
     }
 }
