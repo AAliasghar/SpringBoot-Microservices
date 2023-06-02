@@ -54,10 +54,11 @@ public class EmployeeServiceImpl implements EmployeeService {
 //
 //        DepartmentDto departmentDto = responseEntity.getBody();
 
-//        DepartmentDto departmentDto  = webClient.get().uri("http://localhost:8080/api/departments/" + employee.getDepartmentCode()).retrieve().bodyToMono(DepartmentDto.class).block();
+        DepartmentDto departmentDto  = webClient.get().uri("http://localhost:8080/api/departments/"
+                + employee.getDepartmentCode()).retrieve().bodyToMono(DepartmentDto.class).block();
 
         // Getting Employee Department Code from Department
-        DepartmentDto departmentDto = apiClient.getDepartment(employee.getDepartmentCode());
+//        DepartmentDto departmentDto = apiClient.getDepartment(employee.getDepartmentCode());
 
         // Getting Employee Organization Code from Organization
 //        OrganizationDto organizationDto = apiClient.getDepartment(employee.getOrganizationCode());
