@@ -36,8 +36,11 @@ class EmployeeComponent extends Component {
               <div className="=row">
               <p><strong>Employee First Name: </strong>{this.state.employee.lastName} </p>
             </div>
+              <div className="=row">
+              <p><strong>Employee First Name: </strong>{this.state.employee.email} </p>
+            </div>           
             </div>
-          
+          <div>
           </div>
     </div>
   }
