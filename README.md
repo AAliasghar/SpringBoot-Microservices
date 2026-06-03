@@ -322,15 +322,11 @@ This project is open source and available under the MIT License.
 
 ## 👤 Author
 
-**Ali Asghar** - [GitHub Profile](https://github.com/AAliasghar)
+**Aliasghar** - [GitHub Profile](https://github.com/AAliasghar)
 
 ## 🤝 Contributing
 
 Contributions are welcome! Please feel free to submit pull requests or open issues for bugs and feature requests.
-
-## 📞 Support
-
-For issues and questions, please open a GitHub issue in the repository.
 
 ---
 
